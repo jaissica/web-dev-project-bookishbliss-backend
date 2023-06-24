@@ -5,6 +5,7 @@ const follow = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
+  
   followee: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
