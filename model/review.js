@@ -7,6 +7,7 @@ const review = mongoose.Schema({
   },
   book: String, // isbn
   content: String
-}, {collection: "review", timestamps: true})
+}, 
+{collection: "review", timestamps: true})
 
 export default mongoose.model("review", review);
