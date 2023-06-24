@@ -20,5 +20,4 @@ const booklist = mongoose.Schema({
     rating: Number
   }]
 }, {collection: "booklist", timestamps: true})
-
 export default mongoose.model("booklist", booklist);
