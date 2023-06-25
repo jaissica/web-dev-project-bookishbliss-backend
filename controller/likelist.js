@@ -39,8 +39,12 @@ const getLikeListByUser = async (req, res) => {
 }
 
 export default (app) => {
+  // post: liked lists
   app.post('/likelist/like', likeList);
+  // delete: liked lists 
   app.delete('/likelist/unlike/:llid', unlikeList);
+  // get: get users based on like list 
   app.get('/likelist/user/:uid/list/:lid', getUserLikeList);
+  // get: get users like dlist
   app.get('/likelist/getLikeListsByUser/:uid', getLikeListByUser);
 }
