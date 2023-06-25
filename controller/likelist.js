@@ -28,6 +28,19 @@ const getLikeListByUser = async (req, res) => {
   res.json(lists);
 }
 
+const unlikeList = async (req, res) => {
+  const id = req.params['llid'];
+  const findLike = await Likelist.findById(id);
+  if (!findLike || !req.session['user'] || findLike.user.toString()
+      !== req.session['user']._id) {
+    res.sendStatus(403);
+    return;
+  }
+  const status = await Likelist.deleteOne(findLike);
+  res.json(status);
+}
+
+
 export default (app) => {
   app.post('/likelist/like', likeList);
   app.delete('/likelist/unlike/:llid', unlikeList);
