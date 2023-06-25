@@ -11,17 +11,7 @@ const likeList = async (req, res) => {
   res.json(result);
 }
 
-const unlikeList = async (req, res) => {
-  const id = req.params['llid'];
-  const findLike = await Likelist.findById(id);
-  if (!findLike || !req.session['user'] || findLike.user.toString()
-      !== req.session['user']._id) {
-    res.sendStatus(403);
-    return;
-  }
-  const status = await Likelist.deleteOne(findLike);
-  res.json(status);
-}
+
 
 const getUserLikeList = async (req, res) => {
   const user = req.params['uid'];

@@ -28,12 +28,7 @@ const getLikeBooksByUser = async (req, res) => {
   res.json(lists);
 }
 
-const getUserLikeBook = async (req, res) => {
-  const user = req.params['uid'];
-  const isbn13 = req.params['isbn'];
-  const like = await Likebook.find({user, isbn13})
-  res.json(like);
-}
+
 
 export default (app) => {
   app.post('/likebook/like', likeBook);
