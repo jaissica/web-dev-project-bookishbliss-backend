@@ -1,10 +1,6 @@
 import BookList from "../model/booklist.js"
 
-const findBookListByUser = async (req, res) => {
-  const userId = req.params.uid;
-  const lists = await BookList.find({creator: userId}).sort({createdAt: -1});
-  res.json(lists);
-}
+
 
 const createBookList = async (req, res) => {
   const info = req.body;
