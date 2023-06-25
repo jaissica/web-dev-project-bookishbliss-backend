@@ -36,9 +36,12 @@ const getUserLikeBook = async (req, res) => {
 }
 
 export default (app) => {
+  // post: posts like books
   app.post('/likebook/like', likeBook);
+  // delete: unlike the books
   app.delete('/likebook/unlike/:lbid', unlikeBook);
+  // get: get user liked books
   app.get('/likebook/user/:uid/book/:isbn', getUserLikeBook);
-
+  // get: get liked book based on user
   app.get('/likebook/getLikeBooksByUser/:uid', getLikeBooksByUser);
 }
