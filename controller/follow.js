@@ -66,3 +66,15 @@ const getFollowerList = async (req, res) => {
   .exec();
   res.json(list);
 }
+
+export default (app) => {
+  app.post('/follow/follow', follow);
+  app.delete('/follow/unfollow/:fid', unfollow);
+
+  app.get('/follow/followerCount/:uid', getFollowerCount);
+  app.get('/follow/followeeCount/:uid', getFolloweeCount);
+  app.get('/follow/findFollow/:uid/:curid', findFollow);
+
+  app.get('/follow/followeeList/:uid', getFolloweeList);
+  app.get('/follow/followerList/:uid', getFollowerList);
+}
