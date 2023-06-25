@@ -20,15 +20,7 @@ const getReviewsByBook = async (req, res) => {
   res.json(reviews);
 }
 
-const deleteReview = async (req, res) => {
-  const rid = req.params.rid;
-  if (!req.session['user'] || req.session['user'].role !== "admin") {
-    res.sendStatus(403);
-    return;
-  }
-  const result = await Review.deleteOne({_id: rid});
-  res.json(result);
-}
+
 
 export default (app) => {
   app.post('/review/createReview', createReview);
