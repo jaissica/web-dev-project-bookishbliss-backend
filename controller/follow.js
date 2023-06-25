@@ -1,5 +1,6 @@
 import Follow from "../model/follow.js";
 
+// foolows me
 const follow = async (req, res) => {
   const info = req.body;
   if (!req.session || !req.session['user'] || info.follower
@@ -11,11 +12,14 @@ const follow = async (req, res) => {
   res.json(result);
 }
 
+// unfollow me
 const unfollow = async (req, res) => {
   const fid = req.params.fid;
   const info = await Follow.deleteOne({_id: fid});
   res.json(info);
 }
+
+
 
 const getFollowerCount = async (req, res) => {
   const uid = req.params.uid;
@@ -69,12 +73,16 @@ const getFollowerList = async (req, res) => {
 
 export default (app) => {
   app.post('/follow/follow', follow);
+
   app.delete('/follow/unfollow/:fid', unfollow);
 
   app.get('/follow/followerCount/:uid', getFollowerCount);
+
   app.get('/follow/followeeCount/:uid', getFolloweeCount);
+
   app.get('/follow/findFollow/:uid/:curid', findFollow);
 
   app.get('/follow/followeeList/:uid', getFolloweeList);
+
   app.get('/follow/followerList/:uid', getFollowerList);
 }
