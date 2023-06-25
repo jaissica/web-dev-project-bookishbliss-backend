@@ -30,7 +30,6 @@ const deleteReview = async (req, res) => {
   res.json(result);
 }
 
-
 export default (app) => {
   app.post('/review/createReview', createReview);
   app.get('/review/getReviewsByBook/:isbn', getReviewsByBook);

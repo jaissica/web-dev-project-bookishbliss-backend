@@ -6,25 +6,21 @@ const user = mongoose.Schema({
     required: true,
     unique: true,
   },
-  
   password: {
     type: String,
     required: true,
   },
-
   fullname: String,
   bio: String,
   location: String,
   dob: Date,
   website: String,
   email: String,
-  
   role: {
     type: String,
     enum: ["common", "creator", "admin"],
     default: "common"
   }
-}, 
-{collection: "user"})
+}, {collection: "user"})
 
 export default mongoose.model("user", user);

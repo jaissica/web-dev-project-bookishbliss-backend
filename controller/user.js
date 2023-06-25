@@ -53,8 +53,7 @@ export default (app) => {
   app.post('/register', register);
   app.post('/login', login);
   app.post('/logout', logout);
+
   app.get('/user/profile/:uid', profileById);
   app.put('/user/updateProfile/:uid', editProfile);
 }
-
-

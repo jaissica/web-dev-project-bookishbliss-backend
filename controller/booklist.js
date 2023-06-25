@@ -1,6 +1,10 @@
 import BookList from "../model/booklist.js"
 
-
+const findBookListByUser = async (req, res) => {
+  const userId = req.params.uid;
+  const lists = await BookList.find({creator: userId}).sort({createdAt: -1});
+  res.json(lists);
+}
 
 const createBookList = async (req, res) => {
   const info = req.body;
@@ -9,6 +13,7 @@ const createBookList = async (req, res) => {
     res.sendStatus(403);
     return;
   }
+
   const result = await BookList.create(info);
   res.json(result);
 }
@@ -66,12 +71,6 @@ const deleteBookInList = async (req, res) => {
   const result = await BookList.updateOne({_id: lid},
       {$pull: {books: {_id: bid}}});
   res.json(result)
-}
-
-const findBookListByUser = async (req, res) => {
-  const userId = req.params.uid;
-  const lists = await BookList.find({creator: userId}).sort({createdAt: -1});
-  res.json(lists);
 }
 
 export default (app) => {
